@@ -1,51 +1,74 @@
 <div class="row">
-  <div class="col-1"></div>
-  <div class="col">
-    <div class = "appBackground">
-      <div class="row p-2">
+  <div class="col-3 col-sm-1"></div> 
+  <div class="col-6 col-sm-10 col-xs-12 text-center appBackground" >
+    <div class = "row justify-content-center ">
+      <div class="row p-2 ">
         <div class="col-xs">
           <input  class="inputBox" type="text" placeholder="City Name"  [(ngModel)]="city" name="city">
         </div>
-        <div class="col p-3">
+        <div class="col p-2">
           <button class="btn text-center" (click)="searchWeather()">Enter</button>
         </div>
       </div>
       <div class="row">
         <div class="col img" >
-          <img [src]="icon" alt="" style="height: 15vh; width: 20vw;">
-        </div>
-        <div>
-          <p class="tempText">{{temp}}°C</p>
-          <p class="city text-center">{{cityName}}</p>
-        </div>
-        <div class="row">
-          <p class="status">{{checkIcon}}</p>
-        </div>
-        <div class="row mb-3">
-          <div class="col-3"></div>
-          <div class="col">
-            <p class="highTemp"><img src="../assets/icon2/highTemp.svg" alt="" style="height: 10vh; width: 2vw;"> {{highTemp}}°C</p>
+          <img [src]="icon" alt="" style="height: 15vh; width: 20vw; min-width: fit-content;">
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8 col-xs-8">
+              <p class="tempText">{{temp}}°C</p>
+            </div>
+            <div class="col-2"></div>
           </div>
-          <div class="col">
-            <p class="lowTemp"><img src="../assets/icon2/lowTemp.svg" alt="" style="height: 10vh; width: 2vw;"> {{lowTemp}}°C</p>
+          <div class="row">
+            <div class="col-2 col-xs-1"></div>
+            <div class="col-8 col-xs-10 text-center">
+              <p class="city">{{cityName}}</p>
+            </div>
+            <div class="col-2 col-xs-1"></div>
           </div>
-          <div class="col-3"></div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <img src="../assets/icon2/wind.svg" alt="" style="height: 10vh; width: 5vw;">
-            <p class="wind">{{windSpeed}}Km/h</p>
-            <p class="wind">Wind Speed</p>
+          <div class="row">
+            <div class="col-2 col-xs-1"></div>
+            <div class="col-8 col-xs-10">
+              <p class="status">{{checkIcon}}</p>
+            </div>
+            <div class="col-2 col-xs-10"></div>
           </div>
-          <div class="col">
-            <img src="../assets/icon2/humidity.svg" alt="" style="height: 10vh; width: 5vw;">
-            <p class="humidity">{{humidity}}%</p>
-            <p class="humidity">Humidity</p>
-            
+          <div class="row mb-2">
+            <div class="col-1"></div>
+            <div class="col-5 col-xs-6 text-center">
+              <p class="highTemp"><img src="../assets/icon2/highTemp.svg" alt="" style="height: 100%; max-height: 10vh; width: 100%; max-width: 6vw;"> {{highTemp}}°C</p>
+            </div>
+            <div class="col-5 col-xs-6 text-center">
+              <p class="lowTemp"><img src="../assets/icon2/lowTemp.svg" alt="" style="height: 100%; max-height: 10vh; width: 100%; max-width: 6vw;"> {{lowTemp}}°C</p>
+            </div>
+            <div class="col-1"></div>
+          </div>
+          <div class="row p-2 mt-3">
+            <div class="col-1"></div>
+            <div class="col-5 col-xs-6 justify-content-center">
+              <img src="../assets/icon2/wind.svg" alt="" style="height: 100%; max-height: 10vh; min-height: fit-content; width: 100%; max-width: 6vw; min-width: fit-content;">
+            </div>
+            <div class="col-5 col-xs-6 justify-content-center">
+              <img src="../assets/icon2/humidity.svg" alt="" style="height: 100%; max-height: 9vh; min-height: fit-content; width: 100%; max-width:5vw; min-width: fit-content;">
+            </div>
+            <div class="col-1"></div>
+          </div>
+          <div class="row p-2">
+            <div class="col-1 col-xs-6"></div>
+            <div class="col ">
+              <p class="wind mt-3">{{windSpeed}}Km/h</p>
+              <p class="wind">Wind Speed</p>
+            </div>
+            <div class="col col-xs-6">
+              <p class="humidity mt-3">{{humidity}}%</p>
+              <p class="humidity ">Humidity</p>
+            </div>
+            <div class="col-1 "></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-1"></div>
+  <div class="col-3 col-sm-1"></div>
 </div>
