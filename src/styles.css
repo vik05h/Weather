@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+    --purple-1: #1f1d57;
+    --purple-2: #48319d;
+}
+
+body{
+    background-color: var(--purple-1) !important;
+    background-image: url('../src/assets/26107.jpg');
+    background-position: center;
+    background-size: cover;
+    overflow-x: hidden;
+}

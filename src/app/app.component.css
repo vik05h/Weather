@@ -1,0 +1,102 @@
+.appBackground {
+    width: 100%;
+    max-width: 650px;
+    background: linear-gradient(180deg, #000000d5, #59bbd691);
+    color: #fff;
+    height: 100%;
+    max-height: 850px;
+    margin: 50px auto 0;
+    border-radius: 20px;
+    padding: 20px 15px;
+    text-align: center;
+    box-shadow: 0 0 15px #A0BAC9;
+    transition: 0.8s all;
+}
+
+/* .appBackground {
+    position: relative;
+    z-index: 1;
+    border-radius: 20px;
+  }
+
+.appBackground::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background-image: url('../assets/26107.jpg');
+    background-position: center;
+    background-size: cover;
+    opacity: 0.7;
+    z-index: -1;
+  }
+  
+  .appBackground * {
+    position: relative;
+    border-radius: 20px;
+    z-index: 2;
+  } */
+
+
+.city{
+    font-size: 60px;
+    color: rgb(193, 224, 252);
+    margin-bottom: 10px;
+}
+
+.tempText{
+    margin: 0;
+    font-size: 70px;
+    color: aliceblue;
+}
+.highTemp,.lowTemp,.status{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 2vh;
+    color: rgb(255, 255, 255);
+}
+
+.wind,.humidity{
+    font-size: 20px;
+}
+
+.inputBox{
+    background: transparent;
+    border: #9beeeec0 solid;
+    border-radius: 10px; 
+    height: 6vh; 
+    width: 13vw;
+    transition: 0.4s all;
+    color: aliceblue;
+    font-size: 20px;
+}
+
+.inputBox::placeholder{
+    color: rgb(219, 247, 239);
+}
+
+.inputBox:focus {
+    border: 2px solid #9beeeec0;
+    box-shadow: 0 0 3px #2177c2, 0 0 10px #9beeeec0, 0 0 25px #9beeee;
+    background-color: #3b494d;
+    outline-offset: 0px;
+    outline: none;
+}
+
+.btn{
+    border: 1px black solid;
+    transition: 0.7s all;
+    width: 7vw;
+    height: 4vh;
+    color: aliceblue;
+}
+
+.btn:hover{
+    color: #494848;
+    border: #68eeee;
+    background-color: #68eeee;
+    box-shadow: 0 0 5px #68eeee, 0 0 10px #9beeee, 0 0 50px #52f0f0; 
+}
