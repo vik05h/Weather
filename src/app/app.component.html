@@ -1,74 +1,113 @@
-<div class="row">
-  <div class="col-3 col-sm-1"></div> 
-  <div class="col-6 col-sm-10 col-xs-12 text-center appBackground" >
-    <div class = "row justify-content-center ">
-      <div class="row p-2 ">
-        <div class="col-xs">
-          <input  class="inputBox" type="text" placeholder="City Name"  [(ngModel)]="city" name="city">
+<div class="weather-container" @fadeIn>
+  <div class="weather-card" @slideIn>
+    <!-- Header Section -->
+    <div class="header-section">
+      <h1 class="app-title">
+        <span class="title-icon">☀️</span>
+        Weather Now
+      </h1>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-section" @scaleIn>
+      <div class="search-wrapper">
+        <div class="input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input 
+            class="search-input" 
+            type="text" 
+            placeholder="Enter city name..." 
+            [(ngModel)]="city" 
+            name="city"
+            (keyup.enter)="searchWeather()"
+            [disabled]="isLoading">
         </div>
-        <div class="col p-2">
-          <button class="btn text-center" (click)="searchWeather()">Enter</button>
+        <button 
+          class="search-btn" 
+          (click)="searchWeather()"
+          [disabled]="isLoading">
+          <span *ngIf="!isLoading">Search</span>
+          <span *ngIf="isLoading" class="spinner">⟳</span>
+        </button>
+      </div>
+    </div>
+
+    <ng-container *ngIf="isLoading; else notLoading">
+      <!-- Loading State -->
+      <div class="loading-section" @fadeIn>
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Fetching weather data...</p>
+      </div>
+    </ng-container>
+
+    <ng-template #notLoading>
+      <ng-container *ngIf="hasData; else welcomeTpl">
+        <!-- Weather Content -->
+    <div class="weather-content">
+      <!-- Main Weather Display -->
+      <div class="main-weather" @fadeIn>
+        <div class="weather-icon-wrapper" @pulse>
+          <img [src]="icon" alt="weather icon" class="weather-icon">
+        </div>
+        
+        <div class="temperature-display">
+          <h2 class="temperature">{{temp}}<span class="degree">°C</span></h2>
+          <p class="city-name">{{cityName}}</p>
+          <p class="weather-status">{{checkIcon}}</p>
         </div>
       </div>
-      <div class="row">
-        <div class="col img" >
-          <img [src]="icon" alt="" style="height: 15vh; width: 20vw; min-width: fit-content;">
-          <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8 col-xs-8">
-              <p class="tempText">{{temp}}°C</p>
-            </div>
-            <div class="col-2"></div>
+
+      <!-- Temperature Range -->
+      <div class="temp-range" @slideIn>
+        <div class="temp-card high-temp-card">
+          <img src="../assets/icon2/highTemp.svg" alt="high temperature" class="temp-icon">
+          <div class="temp-info">
+            <span class="temp-value">{{highTemp}}°C</span>
+            <span class="temp-label">High</span>
           </div>
-          <div class="row">
-            <div class="col-2 col-xs-1"></div>
-            <div class="col-8 col-xs-10 text-center">
-              <p class="city">{{cityName}}</p>
-            </div>
-            <div class="col-2 col-xs-1"></div>
+        </div>
+        <div class="temp-card low-temp-card">
+          <img src="../assets/icon2/lowTemp.svg" alt="low temperature" class="temp-icon">
+          <div class="temp-info">
+            <span class="temp-value">{{lowTemp}}°C</span>
+            <span class="temp-label">Low</span>
           </div>
-          <div class="row">
-            <div class="col-2 col-xs-1"></div>
-            <div class="col-8 col-xs-10">
-              <p class="status">{{checkIcon}}</p>
-            </div>
-            <div class="col-2 col-xs-10"></div>
+        </div>
+      </div>
+
+      <!-- Additional Info -->
+      <div class="additional-info" @fadeIn>
+        <div class="info-card wind-card">
+          <div class="info-icon-wrapper">
+            <img src="../assets/icon2/wind.svg" alt="wind" class="info-icon">
           </div>
-          <div class="row mb-2">
-            <div class="col-1"></div>
-            <div class="col-5 col-xs-6 text-center">
-              <p class="highTemp"><img src="../assets/icon2/highTemp.svg" alt="" style="height: 100%; max-height: 10vh; width: 100%; max-width: 6vw;"> {{highTemp}}°C</p>
-            </div>
-            <div class="col-5 col-xs-6 text-center">
-              <p class="lowTemp"><img src="../assets/icon2/lowTemp.svg" alt="" style="height: 100%; max-height: 10vh; width: 100%; max-width: 6vw;"> {{lowTemp}}°C</p>
-            </div>
-            <div class="col-1"></div>
+          <div class="info-details">
+            <p class="info-value">{{windSpeed}} km/h</p>
+            <p class="info-label">Wind Speed</p>
           </div>
-          <div class="row p-2 mt-3">
-            <div class="col-1"></div>
-            <div class="col-5 col-xs-6 justify-content-center">
-              <img src="../assets/icon2/wind.svg" alt="" style="height: 100%; max-height: 10vh; min-height: fit-content; width: 100%; max-width: 6vw; min-width: fit-content;">
-            </div>
-            <div class="col-5 col-xs-6 justify-content-center">
-              <img src="../assets/icon2/humidity.svg" alt="" style="height: 100%; max-height: 9vh; min-height: fit-content; width: 100%; max-width:5vw; min-width: fit-content;">
-            </div>
-            <div class="col-1"></div>
+        </div>
+        <div class="info-card humidity-card">
+          <div class="info-icon-wrapper">
+            <img src="../assets/icon2/humidity.svg" alt="humidity" class="info-icon">
           </div>
-          <div class="row p-2">
-            <div class="col-1 col-xs-6"></div>
-            <div class="col ">
-              <p class="wind mt-3">{{windSpeed}}Km/h</p>
-              <p class="wind">Wind Speed</p>
-            </div>
-            <div class="col col-xs-6">
-              <p class="humidity mt-3">{{humidity}}%</p>
-              <p class="humidity ">Humidity</p>
-            </div>
-            <div class="col-1 "></div>
+          <div class="info-details">
+            <p class="info-value">{{humidity}}%</p>
+            <p class="info-label">Humidity</p>
           </div>
         </div>
       </div>
     </div>
+
+      </ng-container>
+    </ng-template>
+
+    <ng-template #welcomeTpl>
+      <!-- Welcome Message (No Data Yet) -->
+      <div class="welcome-section" @fadeIn>
+        <div class="welcome-icon">🌤️</div>
+        <h3 class="welcome-title">Welcome to Weather Now!</h3>
+        <p class="welcome-text">Enter a city name to get the weather forecast</p>
+      </div>
+    </ng-template>
   </div>
-  <div class="col-3 col-sm-1"></div>
 </div>

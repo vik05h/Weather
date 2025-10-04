@@ -1,12 +1,160 @@
-:root{
-    --purple-1: #1f1d57;
-    --purple-2: #48319d;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --warm-peach: #FFB088;
+  --soft-coral: #FF9A76;
+  --sunset-orange: #FFA384;
+  --cream-white: #FFF5E4;
+  --soft-pink: #FFD4C4;
+  --warm-yellow: #FFCD9E;
+  --fresh-mint: #B8E6D5;
+  --sky-blue: #A8D8EA;
+  --lavender-mist: #D5B9E2;
+  
+  --gradient-sunset: linear-gradient(135deg, #FFB88C 0%, #FF9A8B 50%, #FF6F91 100%);
+  --gradient-peachy: linear-gradient(135deg, #FFDEE9 0%, #FFB88C 100%);
+  --gradient-fresh: linear-gradient(135deg, #FFDEE9 0%, #B8E6D5 100%);
+  --gradient-warm: linear-gradient(135deg, #FFE5B4 0%, #FFB88C 50%, #FF9A8B 100%);
 }
 
-body{
-    background-color: var(--purple-1) !important;
-    background-image: url('../src/assets/26107.jpg');
-    background-position: center;
-    background-size: cover;
-    overflow-x: hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #2D1B69 0%, #5B2A86 25%, #8B4789 50%, #D4507C 75%, #FF9A8B 100%);
+  background-size: 400% 400%;
+  background-attachment: fixed;
+  animation: gradientFlow 25s ease-in-out infinite;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 75%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 25%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 15% 25%, rgba(91, 42, 134, 0.5) 0%, transparent 50%),
+    radial-gradient(circle at 85% 75%, rgba(212, 80, 124, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(139, 71, 137, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 70% 20%, rgba(255, 154, 139, 0.3) 0%, transparent 50%);
+  animation: warmBreathing 25s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes warmBreathing {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    opacity: 0.85;
+    transform: scale(1.08) rotate(1deg);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.12) rotate(-1deg);
+  }
+  75% {
+    opacity: 0.9;
+    transform: scale(1.05) rotate(1.5deg);
+  }
+}
+
+/* Floating warm particles */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 15% 25%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 85% 35%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 45% 55%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(2px 2px at 75% 75%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 25% 85%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 55% 15%, rgba(255, 255, 255, 0.3), transparent);
+  background-size: 300% 300%;
+  animation: floatingParticles 60s linear infinite, shimmer 8s ease-in-out infinite;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes floatingParticles {
+  from {
+    transform: translateY(0) translateX(0);
+  }
+  to {
+    transform: translateY(-100vh) translateX(50px);
+  }
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Scrollbar Styling - Warm Theme */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 245, 228, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #FFB88C, #FF9A8B);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #FF9A8B, #FF6F91);
+}
+
+/* Selection - Warm Peach */
+::selection {
+  background: rgba(255, 180, 140, 0.5);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(255, 180, 140, 0.5);
+  color: white;
 }
